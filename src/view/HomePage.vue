@@ -23,26 +23,31 @@
                 </ul>
             </div>
         </div>
-        <div class="home-links">
-            <div class="what title">
-                <ion-icon name="chevron-back-outline"></ion-icon>
-                <p>What</p>
+        <section class="land-page">
+            <div class="home-links">
+                <div class="what title">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                    <p>What</p>
+                </div>
+                <div class="who">
+                    <p>Who?</p>
+                </div>
+                <div class="why title">
+                    <p>Why</p>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </div>
             </div>
-            <div class="who">
-                <p>Who?</p>
+            <div class="bottom-arrow">
+                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
-            <div class="why title">
-                <p>Why</p>
-                <ion-icon name="chevron-forward-outline"></ion-icon>
-            </div>
-        </div>
-        <div class="bottom-arrow">
-            <ion-icon name="chevron-down-outline"></ion-icon>
-        </div>
+        </section>
     </div>
 </template>
 <script>
-export default {};
+export default {
+
+   
+};
 </script>
 <style lang="scss">
 .container {
@@ -124,58 +129,60 @@ export default {};
             }
         }
     }
-    .home-links {
-        display: flex;
-        padding: 0 80px;
-        justify-content: space-between;
-        position: relative;
-        height: 80vh;
-        .title {
+    .land-page {
+        .home-links {
             display: flex;
-            align-items: center;
-            font-size: 40px;
-            font-weight: 600;
-            gap: 20px;
-            cursor: pointer;
-        }
-        .what {
-            p {
-                color: #064663;
+            padding: 0 80px;
+            justify-content: space-between;
+            position: relative;
+            height: 80vh;
+            .title {
+                display: flex;
+                align-items: center;
+                font-size: 40px;
+                font-weight: 600;
+                gap: 20px;
+                cursor: pointer;
             }
+            .what {
+                p {
+                    color: #064663;
+                }
+                ion-icon {
+                    font-size: 60px;
+                    color: #ecb365;
+                }
+            }
+            .who {
+                align-self: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                p {
+                    color: #ecb365;
+                    font-size: 250px;
+                    font-weight: 700;
+                    position: relative;
+                }
+            }
+            .why {
+                p {
+                    color: #041c32;
+                }
+                ion-icon {
+                    font-size: 60px;
+                    color: #ecb365;
+                }
+            }
+        }
+        .bottom-arrow {
+            display: flex;
+            justify-content: center;
             ion-icon {
+                position: absolute;
                 font-size: 60px;
                 color: #ecb365;
             }
-        }
-        .who {
-            align-self: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            p {
-                color: #ecb365;
-                font-size: 250px;
-                font-weight: 700;
-                position: relative;
-            }
-        }
-        .why {
-            p {
-                color: #041c32;
-            }
-            ion-icon {
-                font-size: 60px;
-                color: #ecb365;
-            }
-        }
-    }
-    .bottom-arrow {
-        display: flex;
-        justify-content: center;
-        ion-icon {
-            position: absolute;
-            font-size: 60px;
-            color: #ecb365;
         }
     }
 }
