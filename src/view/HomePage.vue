@@ -30,12 +30,14 @@
             </div>
             <div class="who">
                 <p>Who?</p>
-                <ion-icon name="chevron-down-outline"></ion-icon>
             </div>
             <div class="why title">
                 <p>Why</p>
                 <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
+        </div>
+        <div class="bottom-arrow">
+            <ion-icon name="chevron-down-outline"></ion-icon>
         </div>
     </div>
 </template>
@@ -48,6 +50,7 @@ export default {};
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    min-height: 100vh;
     .half-back {
         width: 50%;
         height: 100%;
@@ -83,6 +86,26 @@ export default {};
                     font-weight: 300;
                     list-style: none;
                     text-decoration: none;
+                    position: relative;
+                    cursor: pointer;
+                    transition: 0.3s ease-in-out;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        background: #ecb365;
+                        width: 0;
+                        bottom: -10px;
+                        height: 2px;
+                        border-radius: 2px;
+                        transition: 0.3s ease-in-out;
+                    }
+                    &:hover {
+                        color: #ecb365;
+                        &::before {
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }
@@ -106,13 +129,14 @@ export default {};
         padding: 0 80px;
         justify-content: space-between;
         position: relative;
-        height: 100vh;
+        height: 80vh;
         .title {
             display: flex;
             align-items: center;
             font-size: 40px;
             font-weight: 600;
-            gap:20px;
+            gap: 20px;
+            cursor: pointer;
         }
         .what {
             p {
@@ -124,6 +148,7 @@ export default {};
             }
         }
         .who {
+            align-self: center;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -131,10 +156,7 @@ export default {};
                 color: #ecb365;
                 font-size: 250px;
                 font-weight: 700;
-            }
-            ion-icon {
-                font-size: 60px;
-                color: #ecb365;
+                position: relative;
             }
         }
         .why {
@@ -145,6 +167,15 @@ export default {};
                 font-size: 60px;
                 color: #ecb365;
             }
+        }
+    }
+    .bottom-arrow {
+        display: flex;
+        justify-content: center;
+        ion-icon {
+            position: absolute;
+            font-size: 60px;
+            color: #ecb365;
         }
     }
 }
