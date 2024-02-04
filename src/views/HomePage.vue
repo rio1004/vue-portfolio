@@ -1,54 +1,69 @@
 <template>
-    <div class="container">
-        <div class="half-back"></div>
-        <NavBar />
-        <section class="land-page">
-            <div class="home-links">
-                <div class="what title">
-                    <ion-icon name="chevron-back-outline"></ion-icon>
-                    <p>What</p>
-                </div>
-                <div class="who">
-                    <p>Who?</p>
-                </div>
-                <div class="why title">
-                    <p>Why</p>
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="bottom-arrow">
-                <ion-icon name="chevron-down-outline"></ion-icon>
-            </div>
-        </section>
-        <section class="info">
-            <div class="p-info">
-                <div>
-                    <p class="p1">This is my Personal Portfolio</p>
-                    <p class="p2">I’m Rio Martin Golimlim</p>
-                    <div class="skills">
-                        <p>&lt;Back-End&gt;</p>
-                        <span class="circle"></span>
-                        <p class="mid">UX/UI Designer</p>
-                        <span class="circle"></span>
-                        <p>&lt;Front-End&gt;</p>
+    <transition>
+        <div class="container">
+            <div class="half-back"></div>
+            <NavBar />
+            <section class="land-page">
+                <div class="home-links">
+                    <div class="what title">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                        <p>What</p>
+                    </div>
+                    <div class="who">
+                        <p>Who?</p>
+                    </div>
+                    <div class="why title">
+                        <p>Why</p>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
                     </div>
                 </div>
-                <div class="btn-group">
-                    <div class="btn gold-dark">Hire Me!</div>
-                    <div class="btn gold-light">Contact Me!</div>
+                <div class="bottom-arrow">
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
-            </div>
-            <div class="blob">
-                <img src="@/assets/images/blob.png" alt="" />
-            </div>
-        </section>
-    </div>
+            </section>
+            <section class="info">
+                <div class="p-info">
+                    <div>
+                        <p class="p1">This is my Personal Portfolio</p>
+                        <p class="p2">I’m Rio Martin Golimlim</p>
+                        <div class="skills">
+                            <p>&lt;Back-End&gt;</p>
+                            <span class="circle"></span>
+                            <p class="mid">UX/UI Designer</p>
+                            <span class="circle"></span>
+                            <p>&lt;Front-End&gt;</p>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="btn gold-dark" @click="showModal = true">
+                            Hire Me!
+                        </div>
+                        <div class="btn gold-light">Contact Me!</div>
+                    </div>
+                </div>
+                <div class="blob">
+                    <img src="@/assets/images/blob.png" alt="" />
+                </div>
+                <HireModal v-if="showModal" @closeModal="showModal = false" />
+            </section>
+        </div>
+    </transition>
 </template>
 <script>
 import NavBar from "@/components/header/NavBar.vue";
+import HireModal from "@/components/HireModal.vue";
+import { ref } from "vue";
 export default {
     components: {
         NavBar,
+        HireModal,
+    },
+    setup() {
+        const showModal = ref(false);
+
+        return {
+            showModal,
+        };
     },
 };
 </script>
@@ -141,6 +156,7 @@ export default {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        position: relative;
         .p-info {
             display: flex;
             flex-direction: column;
@@ -160,7 +176,7 @@ export default {
                 align-items: center;
                 color: #fff;
                 gap: 12px;
-                font-weight:lighter;
+                font-weight: lighter;
                 .circle {
                     width: 11px;
                     height: 11px;
