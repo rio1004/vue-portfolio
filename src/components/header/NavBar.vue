@@ -4,15 +4,13 @@
         <div class="menu-links">
             <ul>
                 <div class="left menu-link">
-                    <li>Who</li>
-                    <li>What</li>
-                    <li>Works</li>
-                    <li>Why</li>
-                    <li>Contact Me</li>
+                    <li @click="$emit('goTo', 'who')">Who</li>
+                    <li @click="$emit('goTo', 'what')">What</li>
+                    <li @click="$emit('goTo', 'works')">Works</li>
+                    <li @click="$emit('goTo', 'why')">Why</li>
+                    <li @click="$emit('goTo', 'contact')">Contact Me</li>
                 </div>
-                <div class="right menu-link">
-                    
-                </div>
+                <div class="right menu-link"></div>
             </ul>
         </div>
         <div class="social-links">
@@ -34,11 +32,11 @@ export default {
     display: flex;
     justify-content: space-around;
     padding: 20px;
-    z-index: 999;
     .logo {
         font-size: 50px;
         font-weight: 700;
         color: #ecb365;
+        z-index: 99;
     }
     .menu-links {
         align-self: center;

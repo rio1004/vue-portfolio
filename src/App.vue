@@ -22,5 +22,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  background: #041c32;
+
 }
 </style>
