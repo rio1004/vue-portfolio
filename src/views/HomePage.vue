@@ -137,7 +137,7 @@ export default {
     },
     setup() {
         const showModal = ref(false);
-        const page = ref("why");
+        const page = ref("who");
         const goToPage = (p) => {
             console.log(page);
             page.value = p;
