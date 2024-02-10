@@ -4,11 +4,16 @@
         <div class="menu-links">
             <ul>
                 <div class="left menu-link">
-                    <li @click="$emit('goTo', 'who')">Who</li>
-                    <li @click="$emit('goTo', 'what')">What</li>
-                    <li @click="$emit('goTo', 'works')">Works</li>
-                    <li @click="$emit('goTo', 'why')">Why</li>
-                    <li @click="$emit('goTo', 'contact')">Contact Me</li>
+                    <li
+                        @click="$emit('goTo', 'who')"
+                        :class="{ active: page == 'who' }"
+                    >
+                        Who
+                    </li>
+                    <li @click="$emit('goTo', 'what')" :class="{ active: page == 'what' }">What</li>
+                    <li @click="$emit('goTo', 'works')" :class="{ active: page == 'works' }">Works</li>
+                    <li @click="$emit('goTo', 'why')" :class="{ active: page == 'why' }">Why</li>
+                    <li @click="$emit('goTo', 'contact')" :class="{ active: page == 'contact' }">Contact Me</li>
                 </div>
                 <div class="right menu-link"></div>
             </ul>
@@ -25,6 +30,7 @@
 <script>
 export default {
     name: "NavBar",
+    props: ["page"],
 };
 </script>
 <style lang="scss">
@@ -73,6 +79,20 @@ export default {
                     &::before {
                         width: 100%;
                     }
+                }
+            }
+            .active {
+                color: #ecb365;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    background: #ecb365;
+                    width: 0;
+                    bottom: -10px;
+                    height: 2px;
+                    border-radius: 2px;
+                    transition: 0.3s ease-in-out;
+                    width: 100%;
                 }
             }
         }
