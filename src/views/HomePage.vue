@@ -68,6 +68,9 @@
                                 <p>INTERMEDIATE</p>
                             </div>
                         </div>
+                        <div class="vec">
+                            <img src="@/assets/images/Vector.png" alt="">
+                        </div>
                     </section>
                 </div>
             </div>
@@ -227,6 +230,10 @@ export default {
                 }
             }
         }
+        .vec{
+            position: absolute;
+            right: 50px;
+        }
         .why_skills {
             background: #064663;
             height: 100vh;
@@ -242,6 +249,7 @@ export default {
             .cards {
                 display: flex;
                 justify-content: space-between;
+                z-index: 999;
                 .card {
                     padding: 40px;
                     width: 387px;
@@ -249,6 +257,10 @@ export default {
                     box-shadow: 0 0 30px #000;
                     border-radius: 20px;
                     border-bottom: 10px solid #ECB365;
+                    background: #041c32;
+                    &:first-child, &:last-child{
+                        background: #064663;
+                    }
                     h2{
                         font-size: 20px;
                         color: #ECB365;
