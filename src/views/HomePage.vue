@@ -2,7 +2,7 @@
     <transition>
         <div class="container">
             <WhyPage :page="page"/>
-            <NavBar @goTo="goToPage($event)" />
+            <NavBar @goTo="goToPage($event)" :page="page"/>
             <WhoPage @goTo="goToPage($event)" :page="page"/> 
         </div>
     </transition>
