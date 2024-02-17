@@ -33,7 +33,7 @@
                             aliquam nascetur. Nullam posuere urna nisl turpis
                             enim, pellentesque non arcu.
                         </p>
-                        <p>INTERMEDIATE</p>
+                        <p>TECHNOLOGY USED</p>
                     </div>
                     <div class="card">
                         <img src="@/assets/images/windows2.png" alt="" />
@@ -62,7 +62,7 @@
                             aliquam nascetur. Nullam posuere urna nisl turpis
                             enim, pellentesque non arcu.
                         </p>
-                        <p>INTERMEDIATE</p>
+                        <p @click="showSkill = true">TECHNOLOGY USED</p>
                     </div>
                 </div>
                 <div class="vec">
@@ -70,15 +70,27 @@
                 </div>
             </section>
         </div>
+        <Teleport to="body">
+            <SkillModal @close="showSkill = false" v-if="showSkill"/>
+        </Teleport>
     </div>
 </template>
 
 <script>
+import SkillModal from "@/components/SkillModal.vue";
+import { ref } from 'vue';
+
 export default {
     props: ["page"],
-    setup(props) {
-        console.log(props.page);
+    components: {
+        SkillModal,
     },
+    setup(){
+        const showSkill = ref(false); 
+        return {
+            showSkill
+        }
+    }
 };
 </script>
 
@@ -193,6 +205,9 @@ export default {
                         margin-top: 80px;
                         font-size: 15px;
                     }
+                }
+                &:last-child{
+                    cursor: pointer;
                 }
             }
         }
