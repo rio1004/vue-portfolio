@@ -1,5 +1,5 @@
 <template>
-    <div class="half-back" :class="{ isWhy: page == 'why' }">
+    <div class="half-back" :class="{ isWhy: page == 'why', isWhat: page == 'what' }">
         <div class="why_container" v-if="page == 'why'">
             <div class="why_landpage">
                 <div class="why_left">
@@ -33,7 +33,7 @@
                             aliquam nascetur. Nullam posuere urna nisl turpis
                             enim, pellentesque non arcu.
                         </p>
-                        <p>TECHNOLOGY USED</p>
+                        <p @click="showModal(1)">TECHNOLOGY USED</p>
                     </div>
                     <div class="card">
                         <img src="@/assets/images/windows2.png" alt="" />
@@ -49,7 +49,7 @@
                             aliquam nascetur. Nullam posuere urna nisl turpis
                             enim, pellentesque non arcu.
                         </p>
-                        <p>TECHNOLOGY USED</p>
+                        <p @click="showModal(2)">TECHNOLOGY USED</p>
                     </div>
                     <div class="card">
                         <img src="@/assets/images/code.png" alt="" />
@@ -62,7 +62,7 @@
                             aliquam nascetur. Nullam posuere urna nisl turpis
                             enim, pellentesque non arcu.
                         </p>
-                        <p @click="showSkill = true">TECHNOLOGY USED</p>
+                        <p @click="showModal(3)">TECHNOLOGY USED</p>
                     </div>
                 </div>
                 <div class="vec">
@@ -71,26 +71,103 @@
             </section>
         </div>
         <Teleport to="body">
-            <SkillModal @close="showSkill = false" v-if="showSkill"/>
+            <SkillModal
+                @close="showSkill = false"
+                v-if="showSkill"
+                :skillActive="activeSkill"
+            />
         </Teleport>
     </div>
 </template>
 
 <script>
 import SkillModal from "@/components/SkillModal.vue";
-import { ref } from 'vue';
+import { ref } from "vue";
 
 export default {
     props: ["page"],
     components: {
         SkillModal,
     },
-    setup(){
-        const showSkill = ref(false); 
+    setup() {
+        const showSkill = ref(false);
+        const activeSkill = ref([]);
+        const front_end = ref([
+            {
+                title: "HTML",
+                body: "HTML, or HyperText Markup Language, is a standard markup language used for creating web pages and applications. It provides the structure and content of web content, while other technologies like CSS and JavaScript are often used to add styling and dynamic functionality.",
+                img: require("@/assets/images/skill_slider/html_logo.png"),
+                top: "-140px",
+            },
+            {
+                title: "CSS",
+                body: "CSS is a style sheet language used for formatting content in HTML webpages. CSS style sheets can define the appearance and formatting of text, tables, and other elements separately from the content itself. Styles may be found within a webpage's HTML file or in a separate document referenced by multiple webpages.",
+                img: require("@/assets/images/skill_slider/css_logo.png"),
+                top: "-140px",
+            },
+            {
+                title: "VUE",
+                body: "Vue is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex.",
+                img: require("@/assets/images/skill_slider/vue_logo.png"),
+                top: "-60px",
+            },
+            {
+                title: "JS",
+                body: "JavaScript is a dynamic programming language that's used for web development, in web applications, for game development, and lots more. It allows you to implement dynamic features on web pages that cannot be done with only HTML and CSS.",
+                img: require("@/assets/images/skill_slider/js_logo.png"),
+                top: "-94px",
+            },
+        ]);
+        const back_end = ref([
+            {
+                title: "Laravel ",
+                body: "Laravel is a web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.",
+                img: require("@/assets/images/skill_slider/larvel_logo.png"),
+                top: "-94px",
+            },
+            {
+                title: "MySql ",
+                body: "A database is a structured collection of data. It may be anything from a simple shopping list to a picture gallery or the vast amounts of information in a corporate network. To add, access, and process data stored in a computer database, you need a database management system such as MySQL Server. ",
+                img: require("@/assets/images/skill_slider/sql_logo.png"),
+                top: "-94px",
+            },
+        ]);
+        const ui_ux = ref([
+            {
+                title: "Figma ",
+                body: "Figma is a collaborative web application for interface design, with additional offline features enabled by desktop applications for macOS and Windows.",
+                img: require("@/assets/images/skill_slider/figma_logo.png"),
+                top: "-94px",
+            },
+            {
+                title: "Photoshop",
+                body: "Adobe Photoshop is a raster graphics editor developed and published by Adobe Inc. for Windows and macOS. It was originally created in 1987 by Thomas and John Knoll. Since then, the software has become the most used tool for professional digital art, especially in raster graphics editing",
+                img: require("@/assets/images/skill_slider/ps_logo.png"),
+                top: "-94px",
+            },
+        ]);
+
+        const showModal = (payload) => {
+            showSkill.value = true;
+            if (payload == 3) {
+                activeSkill.value = front_end.value;
+            }
+            if (payload == 2) {
+                activeSkill.value = ui_ux.value;
+            }
+            if (payload == 1) {
+                activeSkill.value = back_end.value;
+            }
+        };
         return {
-            showSkill
-        }
-    }
+            showSkill,
+            front_end,
+            back_end,
+            showModal,
+            activeSkill,
+            ui_ux,
+        };
+    },
 };
 </script>
 
@@ -204,11 +281,10 @@ export default {
                         font-weight: bolder;
                         margin-top: 80px;
                         font-size: 15px;
+                        cursor: pointer;
                     }
                 }
-                &:last-child{
-                    cursor: pointer;
-                }
+               
             }
         }
     }
@@ -216,5 +292,8 @@ export default {
 .isWhy {
     width: 100%;
     border-radius: 0px 0px 0px 0px;
+}
+.isWhat{
+    width: 0%;
 }
 </style>
