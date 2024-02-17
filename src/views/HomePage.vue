@@ -19,7 +19,7 @@ export default {
         WhoPage
     },
     setup() {
-        const page = ref("who");
+        const page = ref("why");
         const goToPage = (p) => {
             console.log(page);
             page.value = p;
