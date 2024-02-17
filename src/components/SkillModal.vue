@@ -22,37 +22,12 @@
 <script>
 import { ref } from "vue";
 export default {
-    setup() {
+    props: ["skillActive"],
+    setup(props) {
         const active_slide = ref(0);
         const slide = ref(null);
-        const slider_data = ref([
-            {
-                title: "HTML",
-                body: "HTML, or HyperText Markup Language, is a standard markup language used for creating web pages and applications. It provides the structure and content of web content, while other technologies like CSS and JavaScript are often used to add styling and dynamic functionality.",
-                img: require("@/assets/images/skill_slider/html_logo.png"),
-                top: '-140px'
-            },
-            {
-                title: "CSS",
-                body: "CSS is a style sheet language used for formatting content in HTML webpages. CSS style sheets can define the appearance and formatting of text, tables, and other elements separately from the content itself. Styles may be found within a webpage's HTML file or in a separate document referenced by multiple webpages.",
-                img: require("@/assets/images/skill_slider/css_logo.png"),
-                top: '-140px'
-            },
-            {
-                title: "VUE",
-                body: "Vue is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex.",
-                img: require("@/assets/images/skill_slider/vue_logo.png"),
-                top: "-60px",
-            },
-            {
-                title: "JS",
-                body: "JavaScript is a dynamic programming language that's used for web development, in web applications, for game development, and lots more. It allows you to implement dynamic features on web pages that cannot be done with only HTML and CSS.",
-                img: require("@/assets/images/skill_slider/js_logo.png"),
-                top: "-94px",
-            },
-        ]);
+        const slider_data = ref(props.skillActive);
         slide.value = slider_data.value[active_slide.value];
-
         const next = () => {
             active_slide.value++;
             if (active_slide.value > slider_data.value.length - 1) {
@@ -122,7 +97,7 @@ export default {
             top: 400px;
             cursor: pointer;
             transition: 0.2s;
-            &:hover{
+            &:hover {
                 scale: 1.05;
             }
         }
@@ -167,7 +142,7 @@ export default {
                 margin-top: 20px;
                 cursor: pointer;
                 transition: 0.2s;
-                &:hover{
+                &:hover {
                     background: #041c32;
                     color: #eacaa0;
                 }
