@@ -49,7 +49,7 @@
                             aliquam nascetur. Nullam posuere urna nisl turpis
                             enim, pellentesque non arcu.
                         </p>
-                        <p>INTERMEDIATE</p>
+                        <p>TECHNOLOGY USED</p>
                     </div>
                     <div class="card">
                         <img src="@/assets/images/code.png" alt="" />
